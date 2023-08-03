@@ -1,6 +1,3 @@
-;Name:- Mohit Kishor Ingale.
-;Roll no.:- 59 	Div.:- A
-;Batch:- A3 	DOP:- 25-05-23
 
 
 ;Practical-11.
