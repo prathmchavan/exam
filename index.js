@@ -26,7 +26,7 @@ app.get('/dsa/:filename', (req, res) => {
 // Route to download coa files
 app.get('/coa/:filename', (req, res) => {
   const { filename } = req.params;
-  const filePath = path.join(coaPath, filename + '.asm');
+  const filePath = path.join(coaPath, filename + '.ASM');
 
   fs.readFile(filePath, (err, data) => {
     if (err) {
