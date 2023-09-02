@@ -1,11 +1,17 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
+const cors = require('cors');
 
 const app = express();
+// const cors = cors(); 
+
+app.use(cors());
 const dsaPath = path.join(__dirname, 'dsa');
 const coaPath = path.join(__dirname, 'coa');
-const oopPath = path.join(__dirname,'oop')
+const oopPath = path.join(__dirname,'oop');
+const resPath = path.join(__dirname,'res');
 
 // Define a route to serve C program files
 app.get('/dsa/:filename', (req, res) => {
@@ -59,6 +65,34 @@ app.get('/oop/:filename', (req, res) => {
     }
   });
 });
+
+// Route to download resume file
+app.get('/res', (req, res) => {
+  // const { filename } = req.params;
+
+  // console.log('called')
+  const filePath = path.join(resPath, 'resu.pdf');
+
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      // If the file is not found or there is an error reading the file, return a 404 response
+      res.status(404).send('File not found');
+    } else {
+      // console.log('Response data:', data);
+      // Set the Content-Type header to indicate that the response is a downloadable file
+      res.setHeader('Content-Type', 'application/octet-stream');
+      // Set the Content-Disposition header to make the browser download the file
+      res.setHeader('Content-Disposition', `attachment; filename= resu.pdf`);
+      res.send(data);
+    }
+  });
+});
+
+
+
+
+
+
 
 
 // Start the server
