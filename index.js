@@ -71,7 +71,7 @@ app.get('/res', (req, res) => {
   // const { filename } = req.params;
 
   // console.log('called')
-  const filePath = path.join(resPath, 'resu.pdf');
+  const filePath = path.join(resPath, 'newres.pdf');
 
   fs.readFile(filePath, (err, data) => {
     if (err) {
